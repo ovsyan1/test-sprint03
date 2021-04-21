@@ -1,6 +1,10 @@
 let houseBlueprint = {
     adress: this.adress,
-    date: this.date,
+    date: {
+        toDateString: function(){
+            return new Date();
+        }
+    },
     description: this.description,
     owner: this.owner,
     size: this.size,
@@ -10,7 +14,7 @@ let houseBlueprint = {
 }
 // houseBlueprint._building_speed = 0.5
 
-function HouseBuilder(adress, description, owner, size, roomCount, _building_speed, date){
+function HouseBuilder(adress, description, owner, size, roomCount, _building_speed){
     this.adress = adress;
     this.description = description;
     this.owner = owner;
@@ -18,14 +22,10 @@ function HouseBuilder(adress, description, owner, size, roomCount, _building_spe
     this.roomCount = roomCount;
     this.getDaysToBuild = this.getDaysToBuild
     this._building_speed = 0.5
-    this.date = {
-        toDateString: function(){
-            return new Date();
-        }
-    }
 }
 
 HouseBuilder.prototype = houseBlueprint;
+//houseBlueprint.prototype = HouseBuilder
 
 const house = new HouseBuilder('88 Crescent Avenue', 
                                 'Spacious town house with wood flooring, 2-car garage, and a back patio.',
